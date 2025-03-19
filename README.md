@@ -1,2 +1,6 @@
 # LumbarAging
-腰椎间盘退变是人类运动系统衰老的一个关键指标，与全球腰痛病例的增加有关。目前的诊断方法依赖于影像和医生经验，缺乏预测工具和个性化治疗策略。本研究使用多中心腰椎MRI数据集来绘制中国人群的椎间盘退变，揭示了生命周期中的三个加速退变阶段。年龄热图突出了L1-L3节段的退变率，与真实年龄高度同步，可作为生理年龄估计的基线。基于对比学习的切片集合网络的年龄估计平均绝对误差为2.59年，多中心验证了其可靠性。提出了两种新的数字生物标志物，年龄Delta和年龄Selta，用于预测生理性和病理性腰椎衰老，并在长期临床病例中进行了初步验证。这项研究为脊柱退化提供了见解，并支持个性化的精准医疗。
+Lumbar disc degeneration is a key indicator of aging of the human motor system and is associated with an increase in cases of low back pain worldwide. Current diagnostic methods rely on imaging and physician experience, and lack predictive tools and personalized treatment strategies. This study used a multicenter lumbar MRI dataset to map disc degeneration in a Chinese population, revealing three stages of accelerated degeneration in the life cycle. The age heat map, which highlights the degeneration rates of the L1-L3 segments, is highly synchronized with true age and can be used as a baseline for biological age estimation. The average absolute error of age estimation of the slice set network based on contrast learning is 2.59 years, and its reliability is verified by multi-center. Two new digital biomarkers, age Delta and Age Selta, are proposed for predicting physiologic and pathological lumbar aging and have been preliminatively validated in long-term clinical cases. This research provides insights into spinal degeneration and supports personalized precision medicine.
+
+The training part is the file main.py
+The test part is the predictAge.py command python+ filename
+
