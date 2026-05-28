@@ -41,25 +41,8 @@ if __name__ == "__main__":
     parser.add_argument('--device', default='cuda', type=str)
     parser.add_argument('--gpu_id', default='1', type=str)
 
-    #parser.add_argument("--root_path", default="./data/augmix123", type=str)
-    # parser.add_argument("--train_csv", default="./data/mixed_train.csv", type=str)
-    # parser.add_argument("--val_csv", default="./data/mixed_val.csv", type=str)
-    # parser.add_argument("--test_csv", default="./data/mixed_test.csv", type=str)
-    # parser.add_argument("--root_path", default="./data/crop_scale_intensity_resize123", type=str)
-    #parser.add_argument("--root_path", default="G:/age_regression/yyl/work2/2d-slice-set-networks/data/val_crop_scal_intensity_resize", type=str)
-    parser.add_argument("--root_path", default="G:/age_regression/yyl/work2/2d-slice-set-networks/data/crop_scale_intensity_resize45", type=str)
-    #parser.add_argument("--root_path", default="./data/ori_scale_intensity_resize", type=str)
-    #parser.add_argument("--root_path", default="./data/crop_scale_intensity_resize12345other", type=str)
-   #  parser.add_argument("--train_csv", default="./data_aug/train.csv", type=str)
-   #  parser.add_argument("--val_csv", default="./data_aug/val.csv", type=str)
-   #  parser.add_argument("--test_csv", default="./data_aug/test.csv", type=str)
 
-    # parser.add_argument("--root_path", default="./data/crop_scale_intensity_resize123", type=str)
-    # "New"
-    # parser.add_argument("--train_csv", default="./data/A_train_4dataset.csv", type=str)train-ynew3
-    # parser.add_argument("--val_csv", default="./data/A_val_4dataset.csv", type=str)val-ynew
-    # parser.add_argument("--test_csv", default="./data/A_test_4dataset.csv", type=str)
-    #"Old"
+    parser.add_argument("--root_path", default="./data/crop_scale_intensity_resize45", type=str)
     parser.add_argument("--train_csv", default="./data/Alldatatrain_data.csv", type=str)
     parser.add_argument("--val_csv", default="./data/Alldataval_data.csv", type=str)
     parser.add_argument("--test_csv", default="./data/test-ynew3.csv", type=str)
@@ -79,7 +62,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--seed", default=0, required=False, type=int)
     parser.add_argument("--num_workers", type=int, default=0)
-    parser.add_argument("--result_folder", default="result/1new_TS/2d_slice_attention", required=False)
+    parser.add_argument("--result_folder", default="./result", required=False)
     parser.add_argument("--batch_size", default=16, required=False, type=int)
     parser.add_argument("--patience", default=50, required=False, type=int)
     parser.add_argument("--max_epoch", default=200, required=False, type=int)
