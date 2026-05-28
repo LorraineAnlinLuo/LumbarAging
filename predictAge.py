@@ -76,9 +76,9 @@ def normalize_data(data):
     data /= stds
     return data
 
-image_path = 'G:/age_regression/yyl/work2/2d-slice-set-networks/test/nii_converted/'
+image_path = './test/nii_converted/'
 names = os.listdir(image_path)
-save_file_path = 'G:/age_regression/yyl/work2/2d-slice-set-networks/test/nii_silce'
+save_file_path = './test/nii_silce'
 if not os.path.exists(save_file_path):
                   os.makedirs(save_file_path)
 clahe=cv2.createCLAHE(clipLimit=2.0,tileGridSize=(8,8)) #自适应直方图均衡化
@@ -114,7 +114,7 @@ for name in names:
     nor_resize_img.SetOrigin(resize_img.GetOrigin())
     nor_resize_img.SetDirection(resize_img.GetDirection())
 
-    resize_output_path = r'G:/age_regression/yyl/work2/2d-slice-set-networks/test/nii_resize'
+    resize_output_path = r'./test/nii_resize'
     if not os.path.exists(resize_output_path):
                   os.makedirs(resize_output_path)
     #图像与标签保存
@@ -129,11 +129,11 @@ if __name__ == "__main__":
     parser.add_argument("--run_id", default=None, type=str)
     parser.add_argument('--device', default='cuda', type=str)
     parser.add_argument('--gpu_id', default='1', type=str)
-    parser.add_argument("--root_path", default="G:/age_regression/yyl/work2/2d-slice-set-networks/test/nii_resize", type=str)
+    parser.add_argument("--root_path", default="./test/nii_resize", type=str)
 
     parser.add_argument("--train_csv", default="./data/Alldatatrain_data.csv", type=str)
     parser.add_argument("--val_csv", default="./data/Alldataval_data.csv", type=str)
-    parser.add_argument("--test_csv", default="G:/age_regression/yyl/work2/2d-slice-set-networks/test.csv", type=str)
+    parser.add_argument("--test_csv", default="./test.csv", type=str)
     # parser.add_argument("--frame_keep_style", default="random", type=str, choices=["random", "ordered"], help="style of keeping frames when frame_keep_fraction < 1")
     # parser.add_argument("--frame_keep_fraction", default=1, type=float, help="fraction of frame to keep (usually used during testing with missing frames)")
     # parser.add_argument("--frame_dim", default=3, type=int, choices=[1, 2, 3], help="choose which dimension we want to slice, 1 for sagittal, 2 for coronal, 3 for axial")
@@ -149,7 +149,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--seed", default=0, required=False, type=int)
     parser.add_argument("--num_workers", type=int, default=0)
-    parser.add_argument("--result_folder", default="G:/age_regression/yyl/work2/2d-slice-set-networks/test", required=False)
+    parser.add_argument("--result_folder", default="./test", required=False)
     parser.add_argument("--batch_size", default=16, required=False, type=int)
     parser.add_argument("--patience", default=50, required=False, type=int)
     parser.add_argument("--max_epoch", default=200, required=False, type=int)
@@ -214,7 +214,7 @@ if __name__ == "__main__":
 #     logger.info("Training done;")
 
     logger.info("Loading best model")
-    trainer.load("G:/age_regression/yyl/work2/2d-slice-set-networks/result/1new_TS/2d_slice_attention/run_0006/best_model.pt")
+    trainer.load("./best_model.pt")
     #trainer.load(f"{trainer.result_dir}/best_model.pt")
     logger.info("evaluating model on test set")
     trainer.test(test_loader)
