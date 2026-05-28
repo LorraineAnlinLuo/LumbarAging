@@ -114,7 +114,7 @@ for name in names:
     nor_resize_img.SetOrigin(resize_img.GetOrigin())
     nor_resize_img.SetDirection(resize_img.GetDirection())
 
-    resize_output_path = r'./test/nii_resize'
+    resize_output_path = r'./test/nii'
     if not os.path.exists(resize_output_path):
                   os.makedirs(resize_output_path)
     #图像与标签保存
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     parser.add_argument("--run_id", default=None, type=str)
     parser.add_argument('--device', default='cuda', type=str)
     parser.add_argument('--gpu_id', default='1', type=str)
-    parser.add_argument("--root_path", default="./test/nii_resize", type=str)
+    parser.add_argument("--root_path", default="./test/nii", type=str)
 
     parser.add_argument("--train_csv", default="./data/Alldatatrain_data.csv", type=str)
     parser.add_argument("--val_csv", default="./data/Alldataval_data.csv", type=str)
