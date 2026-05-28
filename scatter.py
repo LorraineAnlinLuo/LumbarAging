@@ -182,87 +182,13 @@
 # plt.show()
 
 
-# import pandas as pd
-# import numpy as np
-# from lifelines import KaplanMeierFitter
-# import matplotlib.pyplot as plt
-
-# # 读取Excel文件
-# file_path = 'regression_differences.xlsx'  # 请将此处的文件路径替换为你的Excel文件路径
-# data = pd.read_excel(file_path)
-
-# # 取绝对值
-# data['Diff_Method_2_Method_1_Abs'] = data.iloc[:, 0].abs()
-
-# # 计算分位数
-# quantiles = data['Diff_Method_2_Method_1_Abs'].quantile([0.2, 0.4, 0.6, 0.8, 1.0])
-
-# # 定义风险等级和对应的疾病发生概率范围
-# risk_levels = ['Low', 'Medium', 'Medium-High', 'High', 'Very High']
-# probability_ranges = {
-#     'Low': (0.0, 0.2),
-#     'Medium': (0.21, 0.4),
-#     'Medium-High': (0.41, 0.6),
-#     'High': (0.61, 0.8),
-#     'Very High': (0.81, 1.0)
-# }
-
-# # 创建存储生存数据的字典
-# survival_data = {level: {'duration': [], 'event': []} for level in risk_levels}
-
-# # 生成生存时间和事件发生标志
-# np.random.seed(42)  # 为了结果可复现
-
-# for value in data['Diff_Method_2_Method_1_Abs']:
-#     if value <= quantiles[0.2]:
-#         risk = 'Low'
-#     elif value <= quantiles[0.4]:
-#         risk = 'Medium'
-#     elif value <= quantiles[0.6]:
-#         risk = 'Medium-High'
-#     elif value <= quantiles[0.8]:
-#         risk = 'High'
-#     else:
-#         risk = 'Very High'
-
-#     # 获取对应的概率范围
-#     prob_range = probability_ranges[risk]
-#     prob = np.random.uniform(prob_range[0], prob_range[1])
-    
-#     # 模拟生存时间和事件发生
-#     survival_time = np.random.uniform(0, 60)  # 在0到60个月之间
-#     event = np.random.binomial(1, prob)  # 根据概率生成事件发生标志
-
-#     # 存储数据
-#     survival_data[risk]['duration'].append(survival_time)
-#     survival_data[risk]['event'].append(event)
-
-# # 创建Kaplan-Meier生存曲线
-# kmf = KaplanMeierFitter()
-
-# plt.figure(figsize=(12, 8))
-
-# # 为每个风险等级绘制生存曲线
-# for risk in risk_levels:
-#     kmf.fit(survival_data[risk]['duration'], event_observed=survival_data[risk]['event'], label=risk)
-#     kmf.plot_survival_function()
-
-# # 添加标签和标题
-# plt.xlabel('18-35years_Time (months)')
-# plt.ylabel('Survival Probability')
-# plt.title('Kaplan-Meier Survival Curves by Risk Level')
-# plt.grid(True)
-# plt.legend(title='Risk Level')
-# plt.show()
-
-
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
 # 读取Excel文件
-file_path = 'G:/age_regression/yyl/Spine_Data/seg13/extracted/signal/signal_updated16.xlsx'  # 请将此处替换为你的Excel文件路径
+file_path = '/signal.xlsx'  # 请将此处替换为你的Excel文件路径
 df = pd.read_excel(file_path)
 
 # 获取"Average Signal Value"列，并计算阶段
@@ -377,9 +303,9 @@ plt.show()
 # names_to_keep = df['ID'].tolist()
 
 # # 定义文件夹路径
-# source_folder = 'G:/age_regression/yyl/Spine_Data/crop_scale_intensity_resize12345'
-# keep_folder = 'G:/age_regression/yyl/Spine_Data/crop_scale_intensity_resize12345_Male'
-# move_folder = 'G:/age_regression/yyl/Spine_Data/crop_scale_intensity_resize12345_Female'
+# source_folder = '/crop_scale_intensity_resize12345'
+# keep_folder = '/crop_scale_intensity_resize12345_Male'
+# move_folder = /crop_scale_intensity_resize12345_Female'
 
 # # 确保目标文件夹存在
 # os.makedirs(keep_folder, exist_ok=True)
@@ -400,7 +326,7 @@ plt.show()
 # import matplotlib.pyplot as plt
 
 # # 读取Excel表格
-# excel_file = 'G:/age_regression/yyl/work2/2d-slice-set-networks/data/all_label.xls'
+# excel_file = '/data/all_label.xls'
 # df = pd.read_excel(excel_file)
 
 # # 假设第二列是年龄，第三列是性别
