@@ -135,26 +135,11 @@ class Trainer:
             target = target.to(self.device)
 
             output, p1, p2, z1, z2 = self.model(input)
-          #  loss = criterion(output, p1, p2, z1, z2, target)
-            #print("target:",target)
-            #print("output:",output)
+
             #布尔值判断条件，
             mask = (output >=60)
             append_age = 0.65
-            # mask_y = (output >= 60)
-            # sub_age = 4.5
-            # output[mask_y] = output[mask_y].add(sub_age)
-         #   mask_y =  (output <= 20)
-          #  sub_age = 3
-         #   output[mask_y] = output[mask_y].sub(sub_age)
-        #     append_age = torch.tensor([2.6816, 2.6817, 2.6822, 2.6820, 2.6813, 2.6820, 2.6816, 2.6811,
-        # 2.6814, 2.6818, 2.6818, 2.6818, 2.6817, 2.6815, 2.6815, 2.6818,
-        # 2.6816, 2.6818, 2.6817, 2.6815, 2.6816, 2.6815, 2.6817, 2.6814,
-        # 2.6813, 2.6817, 2.6818, 2.6817, 2.6820, 2.6816, 2.6814, 2.6814], device='cuda:1')
-           # print("Add age:",append_age)
-            #print(output[mask])
-            output[mask] = output[mask].add(append_age)
-           # print(output)
+
             mae = metric(output,target)
             torch.autograd.set_detect_anomaly(True)
 
@@ -185,20 +170,7 @@ class Trainer:
                 # 布尔值判断条件，
                 mask = (output >= 60)
                 append_age = 0.65
-                # mask_y = (output >= 60)
-                # sub_age = 4.5
-                # output[mask_y] = output[mask_y].add(sub_age)
-              #  mask_y = (output <= 20)
-              #  sub_age = 3
-              #  output[mask_y] = output[mask_y].sub(sub_age)
-             #   print(output[mask_y])
-                #     append_age = torch.tensor([2.6816, 2.6817, 2.6822, 2.6820, 2.6813, 2.6820, 2.6816, 2.6811,
-                # 2.6814, 2.6818, 2.6818, 2.6818, 2.6817, 2.6815, 2.6815, 2.6818,
-                # 2.6816, 2.6818, 2.6817, 2.6815, 2.6816, 2.6815, 2.6817, 2.6814,
-                # 2.6813, 2.6817, 2.6818, 2.6817, 2.6820, 2.6816, 2.6814, 2.6814], device='cuda:1')
-                # print("Add age:",append_age)
-              #  print(target)
-              #  print(output[mask])
+
                 output[mask] = output[mask].add(append_age)
               #  print(output)
                 mae = metric(output, target)
@@ -229,16 +201,7 @@ class Trainer:
                 # 布尔值判断条件，
                 mask = (output >= 60)
                 append_age = 0.65
-                # mask_y = (output >= 60)
-                # sub_age = 4.5
-                # output[mask_y] = output[mask_y].add(sub_age)
-            #    print(output[mask_y])
-                #     append_age = torch.tensor([2.6816, 2.6817, 2.6822, 2.6820, 2.6813, 2.6820, 2.6816, 2.6811,
-                # 2.6814, 2.6818, 2.6818, 2.6818, 2.6817, 2.6815, 2.6815, 2.6818,
-                # 2.6816, 2.6818, 2.6817, 2.6815, 2.6816, 2.6815, 2.6817, 2.6814,
-                # 2.6813, 2.6817, 2.6818, 2.6817, 2.6820, 2.6816, 2.6814, 2.6814], device='cuda:1')
-                # print("Add age:",append_age)
-             #   print(target)
+
                 output[mask] = output[mask].add(append_age)
              #   print(output[mask])
 #               mae = metric(output, target)
@@ -262,67 +225,67 @@ class Trainer:
 #            print(target_list)
 #            print(output_list)
             print("预测您的腰椎年龄为：",output_list,"岁")
-            # diff_list = []
-            # for i in range(len(target_list)):
-            #     diff_list.append(math.fabs(target_list[i] - output_list[i]))
-            #
-            # zipped = zip(name_list,target_list,output_list,diff_list)
-            # for res in sorted(zipped,key=lambda x:x[3],reverse=True):
-            #     print(res)
-            #     break
+            diff_list = []
+            for i in range(len(target_list)):
+                diff_list.append(math.fabs(target_list[i] - output_list[i]))
+            
+            zipped = zip(name_list,target_list,output_list,diff_list)
+            for res in sorted(zipped,key=lambda x:x[3],reverse=True):
+                print(res)
+                break
 
-            # print('\n')
-            # print("PCC", np.round(pearsonr(target_list,output_list)[0],3))  # 皮尔逊相关系数
-            # print("SRCC", np.round(spearmanr(target_list,output_list)[0],3))  # 斯皮尔曼相关系数
-            # print("RMSE", np.round(mean_squared_error(target_list, output_list) ** 0.5,3))  # 均方根误差
+            print('\n')
+            print("PCC", np.round(pearsonr(target_list,output_list)[0],3))  # 皮尔逊相关系数
+            print("SRCC", np.round(spearmanr(target_list,output_list)[0],3))  # 斯皮尔曼相关系数
+            print("RMSE", np.round(mean_squared_error(target_list, output_list) ** 0.5,3))  # 均方根误差
 
-            # print('\n')
-            # print('cs_0', cs_m(target_list, output_list, 0))
-            # print('cs_1', cs_m(target_list, output_list, 1))
-            # print('cs_2', cs_m(target_list, output_list, 2))
-            # print('cs_3', cs_m(target_list, output_list, 3))
-            # print('cs_4', cs_m(target_list, output_list, 4))
-            # print('cs_5', cs_m(target_list, output_list, 5))
-            # print('cs_6', cs_m(target_list, output_list, 6))
-            # print('cs_7', cs_m(target_list, output_list, 7))
-            # print('cs_8', cs_m(target_list, output_list, 8))
-            # print('cs_9', cs_m(target_list, output_list, 9))
-            # print('cs_10', cs_m(target_list, output_list, 10))
+            print('\n')
+            print('cs_0', cs_m(target_list, output_list, 0))
+            print('cs_1', cs_m(target_list, output_list, 1))
+            print('cs_2', cs_m(target_list, output_list, 2))
+            print('cs_3', cs_m(target_list, output_list, 3))
+            print('cs_4', cs_m(target_list, output_list, 4))
+            print('cs_5', cs_m(target_list, output_list, 5))
+            print('cs_6', cs_m(target_list, output_list, 6))
+            print('cs_7', cs_m(target_list, output_list, 7))
+            print('cs_8', cs_m(target_list, output_list, 8))
+            print('cs_9', cs_m(target_list, output_list, 9))
+            print('cs_10', cs_m(target_list, output_list, 10))
 
-            # print('\n')
-            # print('mcs_0', mcs_m(target_list, output_list, 0))
-            # print('mcs_1', mcs_m(target_list, output_list, 1))
-            # print('mcs_2', mcs_m(target_list, output_list, 2))
-            # print('mcs_3', mcs_m(target_list, output_list, 3))
-            # print('mcs_4', mcs_m(target_list, output_list, 4))
-            # print('mcs_5', mcs_m(target_list, output_list, 5))
-            # print('mcs_6', mcs_m(target_list, output_list, 6))
-            # print('mcs_7', mcs_m(target_list, output_list, 7))
-            # print('mcs_8', mcs_m(target_list, output_list, 8))
-            # print('mcs_9', mcs_m(target_list, output_list, 9))
-            # print('mcs_10', mcs_m(target_list, output_list, 10))
+            print('\n')
+            print('mcs_0', mcs_m(target_list, output_list, 0))
+            print('mcs_1', mcs_m(target_list, output_list, 1))
+            print('mcs_2', mcs_m(target_list, output_list, 2))
+            print('mcs_3', mcs_m(target_list, output_list, 3))
+            print('mcs_4', mcs_m(target_list, output_list, 4))
+            print('mcs_5', mcs_m(target_list, output_list, 5))
+            print('mcs_6', mcs_m(target_list, output_list, 6))
+            print('mcs_7', mcs_m(target_list, output_list, 7))
+            print('mcs_8', mcs_m(target_list, output_list, 8))
+            print('mcs_9', mcs_m(target_list, output_list, 9))
+            print('mcs_10', mcs_m(target_list, output_list, 10))
 
-            # print('\n')
-            # print('mae (11,20)', mae_range(11, 20, target_list, output_list))
-            # print('mae (21,30)', mae_range(21, 30, target_list, output_list))
-            # print('mae (31,40)', mae_range(31, 40, target_list, output_list))
-            # print('mae (41,50)', mae_range(41, 50, target_list, output_list))
-            # print('mae (51,60)', mae_range(51, 60, target_list, output_list))
-            # print('mae (61,70)', mae_range(61, 70, target_list, output_list))
-            # print('mae (71,80)', mae_range(71, 80, target_list, output_list))
-            # print('mae (11,80)', mae_range(11, 80, target_list, output_list))
+            print('\n')
+            print('mae (11,20)', mae_range(11, 20, target_list, output_list))
+            print('mae (21,30)', mae_range(21, 30, target_list, output_list))
+            print('mae (31,40)', mae_range(31, 40, target_list, output_list))
+            print('mae (41,50)', mae_range(41, 50, target_list, output_list))
+            print('mae (51,60)', mae_range(51, 60, target_list, output_list))
+            print('mae (61,70)', mae_range(61, 70, target_list, output_list))
+            print('mae (71,80)', mae_range(71, 80, target_list, output_list))
+            print('mae (11,80)', mae_range(11, 80, target_list, output_list))
 
             # # ======= Draw scatter plot of predicted age against true age ======= #
-            # lx = np.arange(np.min(target_list), np.max(target_list))
-            # l1 = plt.plot(lx, lx, color='red', linestyle='solid')
-            # plt.scatter(target_list, output_list, color='green')
-            # plt.xlabel('True Age')
-            # plt.ylabel('Predicted Age')
-            # plt.legend(handles=l1, labels=["y=x"], loc="best")
-            # plt.text(17.5, 67, f'MAE={mae_range(11, 80, target_list, output_list)}')
-            # plt.title("ours")
-            # plt.savefig(os.path.join(self.result_dir, "true_and_predicted_age"))
-            # plt.close()
+            lx = np.arange(np.min(target_list), np.max(target_list))
+            l1 = plt.plot(lx, lx, color='red', linestyle='solid')
+            plt.scatter(target_list, output_list, color='green')
+            plt.xlabel('True Age')
+            plt.ylabel('Predicted Age')
+            plt.legend(handles=l1, labels=["y=x"], loc="best")
+            plt.text(17.5, 67, f'MAE={mae_range(11, 80, target_list, output_list)}')
+            plt.title("ours")
+            plt.savefig(os.path.join(self.result_dir, "true_and_predicted_age"))
+            plt.close()
 
 
 def criterion(output, p1, p2, z1, z2, target):
